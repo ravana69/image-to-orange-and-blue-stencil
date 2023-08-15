@@ -1,0 +1,148 @@
+* {
+	border: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+:root {
+	font-size: calc(16px + (20 - 16)*(100vw - 320px)/(1024 - 320));
+	--bg: #dbdbdb;
+	--formBg: #fff;
+	--inputBorder: #969696;
+	--inputBg: #fff;
+	--inputDisableBg: #f1f1f1;
+	--pColor: #171717;
+}
+body, button, input {
+	color: var(--pColor);
+	font: 1em "Hind", sans-serif;
+	line-height: 1.5;
+}
+body, main {
+	display: flex;
+}
+body {
+	background: var(--bg);
+	flex-direction: column;
+	height: 100vh;
+}
+aside {
+	background: var(--formBg);
+	padding: 1.5em 1.5em 0 1.5em;
+}
+
+/* Form */
+input, label, canvas {
+	display: block;
+}
+button, input {
+	border: 0;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 100%;
+}
+button, input[type=file], .button-link {
+	cursor: pointer;
+}
+button, p, .button-link {
+	margin-bottom: 1.5em;
+}
+button, .button-link {
+	background: #2762f3;
+	border-radius: 0.375em;
+	color: #fff;
+	display: block;
+	padding: 0.75em 1em;
+	transition: background 0.1s linear;
+}
+input {
+	border-radius: 0.25em;
+	margin-bottom: 0.75em;
+	padding: 0.375em;
+}
+input:disabled, .button-link.disabled {
+	cursor: not-allowed;
+}
+input:disabled {
+	background: var(--inputDisableBg);
+	text-overflow: ellipsis;
+}
+input[type=file]:hover + button, .button-link:not(.disabled):hover {
+	background: #0c48db;
+}
+input[type=file] + button {
+	margin-bottom: 0.75em;
+}
+input[type=text] {
+	background: var(--inputBg);
+	box-shadow: 0 0 0 1px var(--inputBorder) inset;
+}
+.button-link {
+	text-align: center;
+	text-decoration: none;
+}
+.button-link.disabled {
+	opacity: 0.5;
+}
+.button-link.positive {
+	background: #16891b;
+}
+.button-link.positive:not(.disabled):hover {
+	background: #117016;
+}
+.upload-btn {
+	margin-bottom: 0.75em;
+	overflow: hidden;
+	position: relative;
+}
+.upload-btn input[type=file] {
+	padding-top: 2.5em;
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 3em;
+}
+label {
+	font-weight: bold;
+}
+
+/* Output */
+main, canvas {
+	width: 100%;
+}
+main {
+	flex-basis: 100%;
+}
+canvas {
+	margin: auto;
+	object-fit: contain;
+	height: 100%;
+}
+
+/* Queries */
+@media screen and (min-width: 768px) {
+	body {
+		flex-direction: row-reverse;
+		justify-content: space-between;
+	}
+	aside {
+		flex-basis: 16em;
+	}
+	main {
+		flex-basis: calc(100% - 16em);
+		height: 100vh;
+	}
+}
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg: #242424;
+		--formBg: #313131;
+		--inputBg: #242424;
+		--inputDisableBg: #242424;
+		--inputBorder: #242424;
+		--pColor: #f1f1f1;
+	}
+}
